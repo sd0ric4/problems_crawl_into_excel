@@ -12,8 +12,10 @@
     'use strict';
     const questionContainer = document.querySelector('.clearfix');
     function getJson() {
+        
         // 获取章节名称
         const chapter = document.querySelector('.ceyan_name h3').innerText.trim().replace(/\n/g, '');
+        
         // 获取所有题目的容器
         const questions = document.querySelectorAll('.TiMu');
 
@@ -33,11 +35,11 @@
             if (type == "单选题" || type == "多选题") {
                 optionsList.forEach((option) => {
                     const optionText = option.innerText.trim().replace(/\n/g, '');
-                    console.log(optionText);
+                    //console.log(optionText);
                     const optionKey = optionText.charAt(0);
                     const optionValue = optionText.substring(2);
                     options[optionKey] = optionValue;
-                    console.log(options);
+                    //console.log(options);
                     options.push({ [optionKey]: optionValue });
                 });
             }
@@ -67,23 +69,29 @@
     }
 
     function exportJson() {
+        const chapter = document.querySelector('.ceyan_name h3').innerText.trim().replace(/\n/g, '');
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'export-button-container';
 
-        const button = document.createElement('button');
+        const button = document.createElement('a');
         button.className = 'jb_btn_bg';
-        button.innerText = 'Export JSON';
+        button.innerText = '导出JSON';
+        button.href = '#';
         button.addEventListener('click', () => {
             const jsonData = JSON.stringify(getJson());
             const blob = new Blob([jsonData], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'data.json';
+            a.download = chapter + '.json';
             a.click();
             URL.revokeObjectURL(url);
         });
-
-        // Add the button to the document body
-        document.body.appendChild(button);
+    
+        buttonContainer.appendChild(button);
+    
+        const ansbtnBox = document.querySelector('.ansbtnBox');
+        ansbtnBox.appendChild(buttonContainer);
     }
 
 
