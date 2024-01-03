@@ -53,7 +53,7 @@
 
 
             // 获取正确答案,并将判断题的对错转换成A或B
-            let correctAnswer = any
+            let correctAnswer = null
             if (type == "填空题") {
                 const blankAnswerElement = question.querySelector('.correctAnswer.marTop16');
                 correctAnswer = blankAnswerElement.innerText.trim().split('：')[1];
