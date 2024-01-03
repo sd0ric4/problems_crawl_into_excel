@@ -2,9 +2,12 @@
 
 为了方便使用整成了油猴脚本
 
-但是json to excel我不会写js，还是python糊一下吧
+但是json to excel我不会写油猴的导入库，还是python糊一下吧
 
 使用方法：
+
+脚本使用方法：
+
 
 下载或者Clone 源代码
 

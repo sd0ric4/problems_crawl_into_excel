@@ -51,8 +51,17 @@
             }
 
 
+
             // 获取正确答案,并将判断题的对错转换成A或B
-            const correctAnswer = question.querySelector('.correctAnswer .answerCon').innerText.trim().replace(/\n/g, '');
+            let correctAnswer = any
+            if (type == "填空题") {
+                const blankAnswerElement = question.querySelector('.correctAnswer.marTop16');
+                correctAnswer = blankAnswerElement.innerText.trim().split('：')[1];
+            }
+            else 
+            {
+                question.querySelector('.correctAnswer .answerCon').innerText.trim().replace(/\n/g, '');
+            }
             // 将题目数据添加到数组
             data.push({
                 chapter,
