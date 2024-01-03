@@ -12,10 +12,10 @@
     'use strict';
     const questionContainer = document.querySelector('.clearfix');
     function getJson() {
-        
+
         // 获取章节名称
         const chapter = document.querySelector('.ceyan_name h3').innerText.trim().replace(/\n/g, '');
-        
+
         // 获取所有题目的容器
         const questions = document.querySelectorAll('.TiMu');
 
@@ -58,9 +58,8 @@
                 const blankAnswerElement = question.querySelector('.correctAnswer.marTop16');
                 correctAnswer = blankAnswerElement.innerText.trim().split('：')[1];
             }
-            else 
-            {
-                question.querySelector('.correctAnswer .answerCon').innerText.trim().replace(/\n/g, '');
+            else {
+                correctAnswer = question.querySelector('.correctAnswer .answerCon').innerText.trim().replace(/\n/g, '');
             }
             // 将题目数据添加到数组
             data.push({
@@ -96,9 +95,9 @@
             a.click();
             URL.revokeObjectURL(url);
         });
-    
+
         buttonContainer.appendChild(button);
-    
+
         const ansbtnBox = document.querySelector('.ansbtnBox');
         ansbtnBox.appendChild(buttonContainer);
     }
